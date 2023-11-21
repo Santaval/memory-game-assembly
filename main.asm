@@ -40,14 +40,25 @@ main:
     jal		print_welcom__loop				# jump to print_welcom__loop and save position to $ra
     la $a1, second_welcome_rows_array
     la $a2, second_welcome_cols_array
-     li $a3, 3056   
+     li $a3, 3000       #second_welcome_rows length   
     jal		print_welcom__loop	
+    jal		reset_display				# jump to reset_display and save position to $ra
+    
     j		exit				# jump to exit
     			# jump to print_welcom__loop and save position to $ra
     
 
 
 
+
+reset_display:
+    li $t0, 0x000000
+    li $t1, 0
+    reset_display_loop:
+    sw $t0, display($t1)
+    addi $t1, $t1, 4
+    bne $t1, 1048576, reset_display_loop
+    jr $ra
 
 print_welcom__loop:
     # main loop
