@@ -7,6 +7,8 @@
 # display height in pixels = 512
 display: .space 1048576 # 1024 * 1024 * 4 bytes per pixel
 
+pressed_key: .word 0
+
 
 # Arreglo para imprimir la bienvenida
 
@@ -72,7 +74,12 @@ main:
     li $a3, 1044
     jal	refresh_display
 
-    
+    menu:
+    # listen for key press
+    jal key_listener  
+    # start game
+    jal is_game_started
+    jal reset_display  
 
     j		exit				# jump to exit
     			# jump to refresh_display and save position to $ra
@@ -80,19 +87,21 @@ main:
 
 
 
-################ TARGET CONTROLLER #####################
-move_target_x:
-    li $t1, 0 # loop counter
-    move_target_loop:
-    lw $t2, 0($a1) # current column
-    subi $t2, $t2, 50 # decrement column
-    sw $t2, 0($a2) # write column
-    addi $a2, $a2, 4 # increment column pointer
-    addi $t1, $t1, 1 # increment loop counter
-    bne $t1, $a3, move_target_loop # loop if counter != 256
-    jr $ra # return to main
+################ KEYBOARD CONTROLLER #####################
+key_listener:
+    li $v0, 12
+    syscall
+    sw $v0, pressed_key
+    jr $ra
 
 
+################ GAME START CONTROLLER #####################
+is_game_started:
+    # comparar si la tecla presionada es m
+    lw $t0, pressed_key
+    li $t1, 109
+    bne $t0, $t1, menu
+    jr $ra
 
 
 ################ DISPLAY CONTROLLER #####################
