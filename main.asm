@@ -110,11 +110,10 @@ target_generator:
     li $a0 511
     jal random_number
     move $a2 $v0
-    mul $a2 $a2 4
+    jal random_number
+    move $a3 $v0
     li $a0 0xFFFFFF
     li $a1 30
-    li $a2 0
-    li $a3 0
     jal draw_square
     move $ra $t7
     jr $ra
