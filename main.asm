@@ -82,9 +82,10 @@ main:
     jal key_listener  
     # start game
     jal is_game_started
-    #jal reset_display
+    jal reset_display
     jal target_generator
-    j menu
+    jal move_target_y
+    jal reset_display
 
     j		exit				# jump to exit
     			# jump to refresh_display and save position to $ra
@@ -123,7 +124,24 @@ target_generator:
     move $ra $t7
     jr $ra
 
-# move target     
+# move target 
+
+move_target_y:
+    move $t7 $ra
+    li $t8 1
+    li $t9 0
+    li $a3 3944
+    move_target_y_loop:
+    la $a1 target_rows_array
+    la $a2 target_cols_array
+    jal refresh_display
+    addi $t8, $t8, 1
+    #jal reset_display
+    bne $t8, 511, move_target_y_loop
+
+    move $ra $t7
+    jr $ra
+
    
 
 ########## RANDOM NUMBER GENERATOR ######
