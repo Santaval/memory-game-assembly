@@ -76,9 +76,13 @@ main:
     jal key_listener  
     # start game
     jal is_game_started
-    #jal reset_display
+    jal reset_display
+
+    player_turn:
+    jal ask_for_square_size
+    move $a1 $v0
     jal target_generator
-    j menu
+    j player_turn
     jal reset_display
 
     j		exit				# jump to exit
@@ -107,18 +111,37 @@ is_game_started:
 ################ TARGET GENERATOR CONTROLLER #####################
 target_generator:
     move $t7 $ra
+    move $t8 $a1 # save size
     li $a0 511
     jal random_number
     move $a2 $v0
     jal random_number
     move $a3 $v0
     li $a0 0xFFFFFF
-    li $a1 30
+    move $a1 $t8
     jal draw_square
     move $ra $t7
     jr $ra
 
+ask_for_square_size:
+    move $t7 $ra
+    jal key_listener
+    move $ra $t7
+    ble $v0, 48, ask_for_square_size # if size <= 0, ask again
+    bge $v0, 52, ask_for_square_size # if size >= 256, ask again
 
+    bne $v0, 49, check_2_square_size
+    li $v0 30
+    j end_check_if
+    check_2_square_size:
+    bne $v0, 50, check_3_square_size
+    li $v0 50
+    j end_check_if
+    check_3_square_size:
+    li $v0 70
+
+    end_check_if:
+    jr $ra
 
 
 # $a0 = color
