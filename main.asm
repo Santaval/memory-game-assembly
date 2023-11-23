@@ -185,6 +185,7 @@ target_generator:
     li $a0 511
     jal random_number
     move $a2 $v0
+    li $a0 600
     jal random_number
     move $a3 $v0
     jal current_color
@@ -325,7 +326,7 @@ print_player_targets:
 
 ########## RANDOM NUMBER GENERATOR ######
 random_number:
-    li $a1, 512  #Here you set $a1 to the max bound.
+    move $a1 $a0
     li $v0, 42  #generates the random number.
     syscall
     move $v0, $a0  #moves the random number to $v0.
