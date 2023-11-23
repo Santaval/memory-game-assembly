@@ -95,6 +95,7 @@ main:
     jal ask_for_square_size
     move $a1 $v0
     jal target_generator
+    jal crash_handler
     jal change_player
     j player_turn
     j		exit				# jump to exit
@@ -178,21 +179,76 @@ target_generator:
     move $a0 $v0
     move $a1 $t8
     jal draw_square
-    jal save_target
 
     move $s0 $a2
     move $s1 $a3
     move $s2 $a1
-    la $a0 first_player_target_row_array
-    la $a1 first_player_target_col_array
-    la $a2 first_player_target_size_array
-    jal check_square_crash
+
     
-    beq $v0, 1, exit
     move $ra $t7
     jr $ra
 
-# a1 = size
+
+# $s0 = row of square
+# $s1 = col of square
+# $s2 = size of square
+crash_handler:
+    move $s4 $ra
+    move $t8 $s0 # save row of square
+    move $t7 $s1 # save col of square
+    move $t6 $s2 # save size of square
+    lw $t0, current_player
+    li $t1, 0
+    bne $t0, $t1, second_player_crash_handler
+    la $a0 first_player_target_row_array
+    la $a1 first_player_target_col_array
+    la $a2 first_player_target_size_array
+    j crash_handler_end_if
+    second_player_crash_handler:
+    la $a0 second_player_target_row_array
+    la $a1 second_player_target_col_array
+    la $a2 second_player_target_size_array
+
+    crash_handler_end_if:
+    jal check_square_crash
+    move $ra $s4
+    jr $ra
+    beq $v0, 0, exit_same_player_crash_handler # if square is not above another square, exit
+    # delete old square
+
+    # undraw old square
+    li $a0 0x000000
+    move $a1 $s0
+    move $a2 $s1
+    move $a3 $s2
+    jal draw_square
+    j exit_same_player_crash_handler
+
+    move $s5 $a0 
+    move $s6 $v1 # save index of square
+    li $s7 11 # save array length
+    jal delete_array_element
+    move $s5 $a1
+    jal delete_array_element
+    move $s5 $a2
+    jal delete_array_element
+
+
+    # sume both squares sizes
+    add $t0 $s2 $t6 # sume both squares sizes
+    move $a1 $t0
+    move $a2 $s1 
+    move $a3 $s2 
+    #jal save_target
+    j crash_handler 
+
+    exit_same_player_crash_handler:
+    move $ra $s4
+    jr $ra
+
+
+
+# $a1 = size
 #$a2 = row
 #$a3 = column
 save_target:
@@ -469,7 +525,21 @@ fill_array:
     bne $t0, $a2, fill_array_loop # loop if counter != array length
     jr $ra # return to main
 
-
+# $s5 = array
+# $s6 = index
+# $s7 = array length
+delete_array_element:
+    li $t0 0 # loop counter
+    delete_array_element_loop:
+    beq $t0, $a1, delete_array_element_if # skip if counter == index
+    addi $a0, $a0, 4 # increment array pointer
+    addi $t0, $t0, 1 # increment loop counter
+    bne $t0, $a2, delete_array_element_loop # loop if counter != array length
+    delete_array_element_if:
+    li $t1 555 # element to replace
+    sw $t1 0($a0) # replace element
+    jr $ra # return to main
+    
 
 exit:
 li		$v0, 10		# $v0 = 10
