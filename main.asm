@@ -27,12 +27,15 @@ press_m_rows_array: .word 296, 296, 296, 296, 296, 296, 296, 296, 296, 296, 296,
 press_m_cols_array: .word 171, 172, 173, 174, 175, 176, 177, 178, 179, 312, 313, 314, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 269, 270, 312, 313, 314, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 268, 269, 270, 312, 313, 314, 171, 172, 173, 179, 180, 181, 182, 268, 269, 270, 312, 313, 314, 171, 172, 173, 180, 181, 182, 186, 187, 190, 191, 192, 198, 199, 200, 201, 211, 212, 213, 214, 224, 225, 226, 227, 240, 241, 242, 244, 245, 246, 247, 252, 253, 254, 267, 268, 269, 270, 271, 272, 273, 280, 281, 282, 283, 297, 298, 299, 302, 303, 304, 312, 313, 314, 321, 322, 323, 324, 330, 331, 339, 340, 341, 171, 172, 173, 180, 181, 182, 186, 187, 188, 189, 190, 191, 192, 196, 197, 198, 199, 200, 201, 202, 203, 209, 210, 211, 212, 213, 214, 215, 216, 222, 223, 224, 225, 226, 227, 228, 229, 240, 241, 242, 243, 244, 245, 246, 247, 248, 250, 251, 252, 253, 254, 255, 256, 266, 267, 268, 269, 270, 271, 272, 273, 278, 279, 280, 281, 282, 283, 284, 285, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 312, 313, 314, 319, 320, 321, 322, 323, 324, 325, 326, 330, 331, 332, 339, 340, 341, 171, 172, 173, 180, 181, 182, 186, 187, 188, 189, 190, 191, 192, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 221, 222, 223, 224, 225, 226, 227, 228, 229, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 266, 267, 268, 269, 270, 271, 272, 273, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 312, 313, 314, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 330, 331, 332, 339, 340, 341, 171, 172, 173, 180, 181, 182, 186, 187, 188, 189, 194, 195, 196, 197, 202, 203, 204, 208, 209, 210, 215, 216, 217, 221, 222, 223, 227, 228, 229, 230, 240, 241, 242, 243, 247, 248, 249, 250, 254, 255, 256, 257, 268, 269, 270, 276, 277, 278, 279, 284, 285, 286, 297, 298, 299, 300, 301, 305, 306, 307, 308, 312, 313, 314, 317, 318, 319, 320, 325, 326, 327, 330, 331, 332, 333, 338, 339, 340, 171, 172, 173, 179, 180, 181, 182, 186, 187, 188, 194, 195, 196, 202, 203, 204, 205, 208, 209, 210, 216, 221, 222, 228, 229, 240, 241, 242, 247, 248, 249, 250, 255, 256, 257, 268, 269, 270, 276, 277, 278, 285, 286, 287, 297, 298, 299, 300, 306, 307, 308, 312, 313, 314, 318, 319, 325, 326, 327, 331, 332, 333, 338, 339, 340, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 186, 187, 188, 194, 195, 196, 203, 204, 205, 208, 209, 210, 211, 221, 222, 223, 240, 241, 242, 248, 249, 255, 256, 257, 268, 269, 270, 276, 277, 278, 285, 286, 287, 297, 298, 299, 306, 307, 308, 309, 312, 313, 314, 325, 326, 327, 331, 332, 333, 337, 338, 339, 340, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 186, 187, 188, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 208, 209, 210, 211, 212, 213, 214, 221, 222, 223, 224, 225, 226, 227, 240, 241, 242, 248, 249, 255, 256, 257, 268, 269, 270, 276, 277, 278, 285, 286, 287, 297, 298, 299, 307, 308, 309, 312, 313, 314, 320, 321, 322, 323, 324, 325, 326, 327, 332, 333, 334, 337, 338, 339, 171, 172, 173, 174, 175, 176, 177, 178, 179, 186, 187, 188, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 209, 210, 211, 212, 213, 214, 215, 216, 222, 223, 224, 225, 226, 227, 228, 229, 240, 241, 242, 248, 249, 255, 256, 257, 268, 269, 270, 276, 277, 285, 286, 287, 297, 298, 299, 307, 308, 309, 312, 313, 314, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 332, 333, 334, 337, 338, 339, 171, 172, 173, 186, 187, 188, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 212, 213, 214, 215, 216, 217, 224, 225, 226, 227, 228, 229, 230, 240, 241, 242, 248, 249, 255, 256, 257, 268, 269, 270, 276, 277, 278, 285, 286, 287, 297, 298, 299, 307, 308, 309, 312, 313, 314, 317, 318, 319, 320, 321, 322, 323, 325, 326, 327, 332, 333, 334, 336, 337, 338, 171, 172, 173, 186, 187, 188, 194, 195, 196, 215, 216, 217, 227, 228, 229, 230, 240, 241, 242, 248, 249, 255, 256, 257, 268, 269, 270, 276, 277, 278, 285, 286, 287, 297, 298, 299, 306, 307, 308, 309, 312, 313, 314, 317, 318, 319, 325, 326, 327, 333, 334, 335, 336, 337, 338, 171, 172, 173, 186, 187, 188, 194, 195, 196, 203, 204, 208, 209, 216, 217, 218, 220, 221, 222, 228, 229, 230, 240, 241, 242, 248, 249, 255, 256, 257, 268, 269, 270, 276, 277, 278, 285, 286, 287, 297, 298, 299, 300, 306, 307, 308, 312, 313, 314, 317, 318, 319, 325, 326, 327, 333, 334, 335, 336, 337, 338, 171, 172, 173, 186, 187, 188, 194, 195, 196, 197, 202, 203, 204, 205, 208, 209, 210, 215, 216, 217, 220, 221, 222, 223, 227, 228, 229, 230, 240, 241, 242, 248, 249, 255, 256, 257, 268, 269, 270, 271, 276, 277, 278, 279, 284, 285, 286, 297, 298, 299, 300, 301, 305, 306, 307, 308, 312, 313, 314, 317, 318, 319, 324, 325, 326, 327, 333, 334, 335, 336, 337, 171, 172, 173, 186, 187, 188, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 221, 222, 223, 224, 225, 226, 227, 228, 229, 240, 241, 242, 248, 249, 255, 256, 257, 269, 270, 271, 272, 273, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 312, 313, 314, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 334, 335, 336, 337, 171, 172, 173, 186, 187, 188, 196, 197, 198, 199, 200, 201, 202, 203, 209, 210, 211, 212, 213, 214, 215, 216, 221, 222, 223, 224, 225, 226, 227, 228, 229, 240, 241, 242, 248, 249, 255, 256, 257, 269, 270, 271, 272, 273, 278, 279, 280, 281, 282, 283, 284, 285, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 312, 313, 314, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 334, 335, 336, 337, 198, 199, 200, 201, 211, 212, 213, 214, 224, 225, 226, 227, 271, 272, 273, 280, 281, 282, 283, 297, 298, 299, 302, 303, 304, 305, 320, 321, 322, 323, 334, 335, 336, 297, 298, 299, 334, 335, 336, 297, 298, 299, 333, 334, 335, 297, 298, 299, 331, 332, 333, 334, 335, 297, 298, 299, 330, 331, 332, 333, 334
 
 # targets array 
-first_player_target_array: .space 400
-first_player_target_size_array: .space 400
+first_player_target_row_array: .word 555,555,555,555,555,555,555,555,555
+first_player_target_col_array: .word 555,555,555,555,555,555,555,555,555
+first_player_target_size_array: .word 555,555,555,555,555,555,555,555,555
+first_player_target_counter: .word 0
 
-second_player_target_array: .space 400
-second_player_target_size_array: .space 400
-
+second_player_target_row_array: .word 555,555,555,555,555,555,555,555,555
+second_player_target_col_array: .word 555,555,555,555,555,555,555,555,555
+second_player_target_size_array: .word 555,555,555,555,555,555,555,555,555
+second_player_target_counter: .word 0
 
 # colors
 black: .word 0x000000
@@ -42,10 +45,23 @@ blue: .word 0x0000FF
 green: .word 0x00FF00
 yellow: .word 0xFFFF00
 
+# brakeline
+brakeline: .asciiz "\n"
+
+# turn info 
+current_player: .word 0
 
 .text
 
 main:
+    la $a0 first_player_target_row_array
+    li $a1 20
+    li $a3 11
+    jal array_push
+    li $a1 11
+    jal print_int_array
+    jal reset_arrays
+    j player_turn
     # set $t8 and $t9 without translation
     li $t8, 0
     li $t9, 0
@@ -77,13 +93,23 @@ main:
     # start game
     jal is_game_started
     jal reset_display
+    jal reset_arrays
 
     player_turn:
     jal ask_for_square_size
     move $a1 $v0
     jal target_generator
+    # # print first player targets
+    la $a0 first_player_target_row_array
+    li $a1 3
+    jal print_int_array
+    jal change_player
     j player_turn
-    jal reset_display
+  
+    
+    
+
+    
 
     j		exit				# jump to exit
     			# jump to refresh_display and save position to $ra
@@ -107,6 +133,50 @@ is_game_started:
     bne $t0, $t1, menu
     jr $ra
 
+reset_arrays:
+    move $t7 $ra
+    la $a0 first_player_target_row_array
+    li $a1 555
+    li $a2 11
+    jal fill_array
+    la $a0 first_player_target_col_array
+    jal fill_array
+    la $a0 first_player_target_size_array
+    jal fill_array
+    la $a0 second_player_target_row_array
+    jal fill_array
+    la $a0 second_player_target_col_array
+    jal fill_array
+    la $a0 second_player_target_size_array
+    jal fill_array
+    move $ra $t7
+    jr $ra
+
+################ TURN CONTROLLER #####################
+current_color:
+    lw $t0, current_player
+    li $t1, 0
+    bne $t0, $t1, current_color_else
+    li $v0, 0x0000FF
+    j current_color_end_if
+    current_color_else:
+    li $v0, 0x00FF00
+    current_color_end_if:
+    jr $ra
+
+change_player:
+    lw $t0, current_player
+    li $t1, 0
+    bne $t0, $t1, change_player_else
+    li $t0, 1
+    sw $t0, current_player
+    j change_player_end_if
+    change_player_else:
+    li $t0, 0
+    sw $t0, current_player
+    change_player_end_if:
+    jr $ra    
+
 
 ################ TARGET GENERATOR CONTROLLER #####################
 target_generator:
@@ -117,11 +187,61 @@ target_generator:
     move $a2 $v0
     jal random_number
     move $a3 $v0
-    li $a0 0xFFFFFF
+    jal current_color
+    move $a0 $v0
     move $a1 $t8
     jal draw_square
+    jal save_target
     move $ra $t7
     jr $ra
+
+# a1 = size
+#$a2 = row
+#$a3 = column
+save_target:
+    move $t6 $ra
+    lw $t0 current_player # get current player
+    li $t1 0  # will be used to compare with current player
+    bne $t0, $t1, save_second_player_target # if current player is 1, save target in second player array
+    la $a0 first_player_target_size_array
+    li $a3 11
+    jal array_push
+    la $a0 first_player_target_row_array
+    move $a1 $a2
+    jal array_push
+    la $a0 first_player_target_col_array
+    move $a1 $a3
+    jal array_push
+    la $t0 first_player_target_counter
+    lw $t1 0($t0)
+    addi $t1 $t1 1
+    sw $t1 0($t0)
+    move $ra $t6
+    jr $ra
+    save_second_player_target:
+     la $a0 second_player_target_size_array
+    li $a3 11
+    jal array_push
+    la $a0 second_player_target_row_array
+    move $a1 $a2
+    jal array_push
+    la $a0 second_player_target_col_array
+    move $a1 $a3
+    jal array_push
+    la $t0 second_player_target_counter
+    lw $t1 0($t0)
+    addi $t1 $t1 1
+    sw $t1 0($t0)
+    move $ra $t6
+    jr $ra
+    
+   
+
+
+
+     
+
+
 
 ask_for_square_size:
     move $t7 $ra
@@ -167,6 +287,35 @@ draw_square:
     bne $t2, $a3, draw_column_loop # loop if counter != size
     subi $t1, $t1, 1 # increment row counter
     bne $t1, $a2, draw_row_loop # loop if counter != size
+    jr $ra # return to main
+
+# $a0 = color
+# $a1 row array
+# $a2 col array
+# $a3 size array
+print_player_targets:
+    move $v0 $ra
+    li $t5 0 # loop counter
+    move $t7 $a1 # save row array pointer
+    move $t8 $a2 # save col array pointer
+    move $t9 $a3 # save size array pointer
+    print_player_targets_loop:
+    lw $t0, 0($t7) # current row
+    lw $t1, 0($t8) # current column
+    lw $t2, 0($t9) # current size
+    li $t6 555
+    beq $t0, $t6, print_player_targets_end_if # skip if current size == -1
+    move $a0 $t0
+    move $a1 $t1
+    move $a2 $t2
+    jal draw_square
+    print_player_targets_end_if:
+    addi $t7, $t7, 4 # increment row pointer
+    addi $t8, $t8, 4 # increment column pointer
+    addi $t9, $t9, 4 # increment size pointer
+    addi $t5, $t5, 1 # increment loop counter
+    bne $t5, 11, print_player_targets_loop # loop if counter != 256
+    move $ra $v0
     jr $ra # return to main
 
 
@@ -221,6 +370,54 @@ refresh_display:
     jr $ra # return to main
       
 
+
+############ ARRAY FUNCTIONS ############
+
+# $a0 = array
+# $a1 = array length
+print_int_array:
+    li $t0 0 # loop counter
+    move $t1 $a0 # save array pointer
+    print_int_array_loop:
+    lw $a0 0($t1) # current element
+    li $v0 1 # print int
+    syscall
+    li $v0 4 # print space
+    la $a0 brakeline
+    syscall
+    addi $t1, $t1, 4 # increment array pointer
+    addi $t0, $t0, 1 # increment loop counter
+    bne $t0, $a1, print_int_array_loop # loop if counter != array length
+    jr $ra # return to main
+
+# $a0 = array
+# $a1 = element
+# $a2 = array length
+array_push:
+    li $t0 0 # loop counter
+    array_push_loop:
+    lw $t1 0($a0) # current element
+    beq $t1, 555, array_push_end_if # skip if current element != 555
+    addi $a0, $a0, 4 # increment array pointer
+    addi $t0, $t0, 1 # increment loop counter
+    bne $t0, $a2, array_push_loop # loop if counter != array length
+    array_push_end_if:
+    sw $a1 0($a0) # save element
+    jr $ra # return to main
+
+# $a0 = array
+# $a1 = element
+# $a2 = arry length
+
+fill_array:
+    # fill array with element
+    li $t0 0 # loop counter
+    fill_array_loop:
+    sw $a1 0($a0) # save element
+    addi $a0, $a0, 4 # increment array pointer
+    addi $t0, $t0, 1 # increment loop counter
+    bne $t0, $a2, fill_array_loop # loop if counter != array length
+    jr $ra # return to main
 
 
 
