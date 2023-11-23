@@ -45,10 +45,12 @@ target_types_counter: .word 0,0,0,0,0
 .text
 
 main:
-    j game_start
+    menu:
+    #j game_start
     # set $t8 and $t9 without translation
     li $t8, 0
     li $t9, 0
+
 
     # render welcome message into display (first part)
     li $a0, 0xFFFFFF
@@ -71,7 +73,6 @@ main:
     jal	refresh_display				# jump to refresh_display and save position to $ra
 
 
-    menu:
     # listen for key press
     jal key_listener  
     # start game
@@ -81,7 +82,11 @@ main:
     game_start:
     jal gen_targets
     jal reset_display
-    jal pick_target_for_ask   
+    jal pick_target_for_ask
+    move $a0 $v0
+    jal key_listener
+    move $a1 $v0
+    jal validate_target_answer   
     j exit				# jump to exit
     			# jump to refresh_display and save position to $ra
     
@@ -95,6 +100,11 @@ key_listener:
     sw $v0, pressed_key
     jr $ra
 
+int_listener:
+    li $v0, 5
+    syscall
+    sw $v0, pressed_key
+    jr $ra
 
 ################ GAME START CONTROLLER #####################
 is_game_started:
@@ -112,6 +122,21 @@ is_game_started:
 
 ################ TARGET GENERATOR CONTROLLER #####################
 
+# $a0 = target type
+# $a1 = pressed key
+validate_target_answer:
+    la $t0 target_types_counter
+    mul $t1 $a0 4 # index array offset
+    add $t0 $t0 $t1 # add offset to array pointer
+    lw $t1 0($t0) # current target type counter
+
+    # tecla presionada 
+    sub $t2 $a1 48 # convert to int
+
+    # comparar si la tecla presionada es igual al tipo de target
+    beq $t2, $t1 game_start
+    j menu
+
 
 pick_target_for_ask:
     move $t9 $ra
@@ -119,17 +144,15 @@ pick_target_for_ask:
     li $a0 5
     jal random_number
     move $a0 $v0
+    move $s0 $v0 # index of target type
     jal color_picker
     move $a0 $v0 # save color
     move $a1 $t8 # save size
     jal draw_square
-    jal key_listener
-
-
-
+    
+    move $v0 $s0 # return target type
     move $ra $t9
     jr $ra
-
 
 
 gen_targets: 
@@ -240,90 +263,7 @@ draw_square:
     bne $t1, $a2, draw_row_loop # loop if counter != size
     jr $ra # return to main
 
-# $a0 = color
-# $a1 row array
-# $a2 col array
-# $a3 size array
-print_player_targets:
-    move $v0 $ra
-    li $t5 0 # loop counter
-    move $t7 $a1 # save row array pointer
-    move $t8 $a2 # save col array pointer
-    move $t9 $a3 # save size array pointer
-    print_player_targets_loop:
-    lw $t0, 0($t7) # current row
-    lw $t1, 0($t8) # current column
-    lw $t2, 0($t9) # current size
-    li $t6 555
-    beq $t0, $t6, print_player_targets_end_if # skip if current size == -1
-    move $a1 $t0
-    move $a2 $t1
-    move $a3 $t2
-    jal draw_square
-    print_player_targets_end_if:
-    addi $t7, $t7, 4 # increment row pointer
-    addi $t8, $t8, 4 # increment column pointer
-    addi $t9, $t9, 4 # increment size pointer
-    addi $t5, $t5, 1 # increment loop counter
-    bne $t5, 11, print_player_targets_loop # loop if counter != 256
-    move $ra $v0
-    jr $ra # return to main
 
-
-# check if square is above another square
-# $a0 = rows array
-# $a1 = cols array
-# $a2 = size array
-# $s0 = row of square
-# $s1 = col of square
-# $s2 = size of square
-# return $vo if square is above another square (0 or 1), $v1 = index of square, $s0 = row of square, $s1 = col of square and $s2 = size of square
-
-   check_square_crash:
-   li $t0 0 # loop counter
-
-   check_square_crash_loop:
-    lw $t1 0($a0) # current row
-    lw $t2 0($a1) # current column
-    lw $t3 0($a2) # current size
-
-    beq $t1, 555, no_crash
-    beq $t1, $s0, no_crash # skip if row == row of square, because its probably the same square
-    beq $t2, $s1, no_crash # skip if column == column of square, because its probably the same square
-
-    add $t4 $t1 $t3 # keep into $t4 row + size
-    add $t5 $t2 $t3 # keep into $t5 column + size
-
-    blt $t4, $s0, no_crash # skip if row + size < row of square
-    bgt $t1, $s0, no_crash # skip if row > row of square
-    blt $t2, $s1, no_crash # skip if column > column of square
-    bge $t5, $s1, crash # skip if column + size < column of square
-
-    no_crash:
-    addi $a0, $a0, 4 # increment row pointer
-    addi $a1, $a1, 4 # increment column pointer
-    addi $a2, $a2, 4 # increment size pointer
-    addi $t0, $t0, 1 # increment loop counter
-    li $v0 0
-    bne $t0, 11, check_square_crash_loop 
-    j check_square_crash_end
-
-    crash:
-    li $v0 1 # return 1 if square is above another square
-    move $v1 $t0 # save index of square
-    move $s0 $t1 # save row of square
-    move $s1 $t2 # save col of square
-    move $s2 $t3 # save size of square
-
-    check_square_crash_end:
-    jr $ra # return to main
-
-
-
- 
-
-
-   
 
 
 ########## RANDOM NUMBER GENERATOR ######
