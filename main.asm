@@ -38,6 +38,7 @@ yellow: .word 0xFFFF00
 # brakeline
 brakeline: .asciiz "\n"
 
+score: .word 0
 targets_counter: .word 2
 target_types_counter: .word 0,0,0,0,0
 
@@ -79,14 +80,24 @@ main:
     jal is_game_started
     jal reset_display
 
-    game_start:
+    game_loop:
+    jal reset_display
+    jal reset_target_type_counter
     jal gen_targets
+    # sleep 1 second
+    li $v0, 32
+    li $a0, 3000
+    syscall
+
     jal reset_display
     jal pick_target_for_ask
     move $a0 $v0
     jal key_listener
     move $a1 $v0
-    jal validate_target_answer   
+    jal validate_target_answer 
+    beq $v0, 1, game_loop
+    j menu  
+
     j exit				# jump to exit
     			# jump to refresh_display and save position to $ra
     
@@ -134,8 +145,25 @@ validate_target_answer:
     sub $t2 $a1 48 # convert to int
 
     # comparar si la tecla presionada es igual al tipo de target
-    beq $t2, $t1 game_start
-    j menu
+    beq $t2, $t1 correct_answer
+    li $v0 0
+    jr $ra
+    correct_answer:
+    # increase player score
+    la $t3 score
+    lw $t3 0($t3)
+    addi $t3 $t3 1
+    sw $t3 score
+
+    # increate target counter
+    la $t4 targets_counter
+    lw $t4 0($t4)
+    addi $t4 $t4 1
+    sw $t4 targets_counter
+
+    li $v0 1
+    jr $ra
+    
 
 
 pick_target_for_ask:
@@ -206,6 +234,18 @@ increment_target_type:
     sw $t2 0($t1) # save counter
     jr $ra # return to main
 
+# reset target type counter
+reset_target_type_counter:
+    la $t0 target_types_counter
+    li $t1 0
+    li $t2 5
+    li $t3 0
+    reset_target_type_counter_loop:
+    sw $t3 0($t0)
+    addi $t0 $t0 4
+    addi $t1 $t1 1
+    bne $t1 $t2 reset_target_type_counter_loop
+    jr $ra
 
 target_generator:
     move $t7 $ra
