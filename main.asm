@@ -128,6 +128,7 @@ main:
     jal validate_target_answer 
     beq $v0, 1, game_loop
     jal game_over_screen_handler
+    jal game_over_resets
     game_over_wait_key:
     jal press_m__screen
     jal key_listener
@@ -179,8 +180,16 @@ press_m__screen:
     move $ra $t8
     jr $ra
 
-########## GAME OVER CONTROLLER ##########
+########## GAME OVER CONTROLLER #####################
 
+game_over_resets:
+    la $t0 score
+    li $t1 0
+    sw $t1 0($t0)
+    li $t1 2
+    la $t0 targets_counter
+    sw $t1 0($t0)
+    jr $ra
 
 game_over_screen_handler:
     move $t7 $ra
